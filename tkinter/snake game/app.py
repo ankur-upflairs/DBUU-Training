@@ -10,7 +10,7 @@ class Canvas(tk.Canvas):
         self.snake_positions=[(100,100),(80,100),(60,100)]
         self.food_position=(200,100)
         self.direction = 'Right'
-        
+        self.bind_all('<Key>',self.on_key_press)
         self.load_assests()
         self.perform_actions()
     def load_assests(self):
@@ -26,7 +26,15 @@ class Canvas(tk.Canvas):
         
     def move_snake(self):
         head_x_position,head_y_position = self.snake_positions[0]
-        new_head_position=[(head_x_position +MOVE_INCREMENT,head_y_position)]
+        if self.direction=='Right':
+            new_head_position=[(head_x_position +MOVE_INCREMENT,head_y_position)]
+        elif self.direction=='Left':
+            new_head_position=[(head_x_position -MOVE_INCREMENT,head_y_position)]
+        elif self.direction=='Up':
+            new_head_position=[(head_x_position,head_y_position-MOVE_INCREMENT)]
+        elif self.direction=='Down':
+            new_head_position=[(head_x_position ,head_y_position+MOVE_INCREMENT)]
+            
         self.snake_positions=new_head_position + self.snake_positions[:-1]
         for snakeId,position in zip(self.find_withtag('snake'),self.snake_positions):
             self.coords(snakeId,*position)
@@ -35,6 +43,13 @@ class Canvas(tk.Canvas):
         self.move_snake()
         self.after(100,self.perform_actions)
         
+    def on_key_press(self,e):
+        all_directions = ('Right',"Left","Up","Down")
+        oposite=({"Right","Left"},{"Up","Down"})
+        key_pressed=e.keysym
+        if key_pressed in all_directions and {key_pressed,self.direction} not in oposite:
+            self.direction=key_pressed
+        # print(key_pressed)
         
         
 root=tk.Tk()
