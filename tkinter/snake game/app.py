@@ -1,5 +1,6 @@
 import tkinter as tk
 from PIL import Image,ImageTk
+from random import randint
 MOVE_INCREMENT=20
 class Canvas(tk.Canvas):
     
@@ -38,8 +39,34 @@ class Canvas(tk.Canvas):
         self.snake_positions=new_head_position + self.snake_positions[:-1]
         for snakeId,position in zip(self.find_withtag('snake'),self.snake_positions):
             self.coords(snakeId,*position)
+            
+    def check_collision(self):
+        x,y=self.snake_positions[0]
+        return x in (0,600) or y in (20,620) or (x,y) in self.snake_positions[1:]
+    
+    def check_food_collision(self):
+        if self.snake_positions[0] == self.food_position :
+            self.score+=1
+            self.food_position = self.change_food_position()
+            self.coords('food',*self.food_position)
+            self.snake_positions.append(self.snake_positions[-1])
+            self.create_image(self.snake_positions[-1][0],self.snake_positions[-1][1],image=self.snake_image,tags='snake')
+            score=self.find_withtag('score')
+            self.itemconfig(score,text=f"Score {self.score}",tags='score')
+            
+    def change_food_position(self):
+        while True:
+            x=randint(1,29) * 20
+            y=randint(3,29) * 20
+            if (x,y) not in self.snake_positions:
+                return (x,y)
+        
         
     def perform_actions(self):
+        if self.check_collision():
+            self.end_game()
+            return
+        self.check_food_collision()
         self.move_snake()
         self.after(100,self.perform_actions)
         
@@ -50,7 +77,15 @@ class Canvas(tk.Canvas):
         if key_pressed in all_directions and {key_pressed,self.direction} not in oposite:
             self.direction=key_pressed
         # print(key_pressed)
-        
+    def end_game(self):
+        self.delete(tk.ALL)
+        self.create_text(
+            self.winfo_width()/2,
+            self.winfo_height() /2,
+            text=f"Game End: Your Score is {self.score}",
+            font=('TkDefaultfont',24),
+            fill='white'
+        )
         
 root=tk.Tk()
 root.resizable(False,False)
