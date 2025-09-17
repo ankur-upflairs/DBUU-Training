@@ -1,0 +1,8 @@
+pip install django
+==create project ==
+django-admin startproject basic
+python -m django startproject myapp
+
+== run server ==
+python manage.py runserver
+

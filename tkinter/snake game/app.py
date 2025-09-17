@@ -14,6 +14,7 @@ class Canvas(tk.Canvas):
         self.bind_all('<Key>',self.on_key_press)
         self.load_assests()
         self.perform_actions()
+        
     def load_assests(self):
         self.create_text(50,14,text=f'Score {self.score}',fill='white',font=('TkDefaultFont',16),tags='score')
         self.create_rectangle(7,23,593,613 , outline='lightyellow')
