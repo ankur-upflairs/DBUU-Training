@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JavaScript Fundamentals - EduPlatform</title>
+    <title>{{title}} - EduPlatform</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -25,16 +25,16 @@
             <div class="container">
                 <div class="course-detail-content">
                     <div class="course-detail-info">
-                        <h1>JavaScript Fundamentals</h1>
-                        <p class="course-instructor">Instructor: John Smith</p>
-                        <p class="course-description-full">Learn the basics of JavaScript programming, including variables, functions, and DOM manipulation. Perfect for beginners starting their web development journey.</p>
+                        <h1>{{course.title}}</h1>
+                        <p class="course-instructor">Instructor: {{course.instructor}}</p>
+                        <p class="course-description-full">{{course.description}}</p>
                         
                         <div class="course-details-meta">
                             <div class="meta-item">
-                                <strong>Duration:</strong> 40 hours
+                                <strong>Duration:</strong> {{course.duration}} hours
                             </div>
                             <div class="meta-item">
-                                <strong>Created:</strong> January 15, 2024
+                                <strong>Created:</strong> {{course.createdAt}}
                             </div>
                             <div class="meta-item">
                                 <strong>Level:</strong> Beginner
@@ -47,7 +47,7 @@
                         </div>
                     </div>
                     <div class="course-detail-image">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png" alt="JavaScript Fundamentals">
+                        <img src="{{course.image}}" alt="JavaScript Fundamentals">
                     </div>
                 </div>
             </div>

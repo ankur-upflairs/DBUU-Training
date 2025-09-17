@@ -19,5 +19,6 @@ from django.urls import path
 from .views import *  
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('courses/',all_courses)
+    path('courses/',all_courses),
+    path('courses/<int:id>',single_course_by_id)
 ]

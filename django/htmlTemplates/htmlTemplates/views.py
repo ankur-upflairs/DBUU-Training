@@ -1,4 +1,6 @@
 from django.shortcuts import render
+from django.http import HttpResponseNotFound
+
 courses = [
     {
         "id": 1,
@@ -43,3 +45,16 @@ def all_courses(request):
         "title":"All Courses - EduPlatform",
         "courses":courses
     })
+
+def single_course_by_id(request,id):
+    selected_course=None
+    for course in courses:
+        if course['id'] == id:
+            selected_course=course
+    if selected_course is None :
+        return HttpResponseNotFound('Course not found')
+    else:
+        return render(request,'course-detail.html',{
+            "title":selected_course['title'],
+            "course":selected_course
+        })
