@@ -1,4 +1,122 @@
+{% extends 'base.html' %}
+
 {% load static %}
+{% block title %}
+    <title>{{title}} - EduPlatform</title>
+{%endblock%}
+{%block styles %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+{%endblock%}
+
+{%block content%}
+
+    {% include  "components/navbar.html" %}
+    <main>
+        <section class="course-detail-hero">
+            <div class="container">
+                <div class="course-detail-content">
+                    <div class="course-detail-info">
+                        <h1>{{course.title}}</h1>
+                        <p class="course-instructor">Instructor: {{course.instructor}}</p>
+                        <p class="course-description-full">{{course.description}}</p>
+                        
+                        <div class="course-details-meta">
+                            <div class="meta-item">
+                                <strong>Duration:</strong> {{course.duration}} hours
+                            </div>
+                            <div class="meta-item">
+                                <strong>Created:</strong> {{course.createdAt}}
+                            </div>
+                            <div class="meta-item">
+                                <strong>Level:</strong> Beginner
+                            </div>
+                        </div>
+
+                        <div class="course-actions">
+                            <a href="courses.html" class="btn btn-secondary">Back to Courses</a>
+                            <a href="#" class="btn btn-primary">Enroll Now</a>
+                        </div>
+                    </div>
+                    <div class="course-detail-image">
+                        <img src="{{course.image}}" alt="JavaScript Fundamentals">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="course-curriculum">
+            <div class="container">
+                <h2>Course Curriculum</h2>
+                <div class="curriculum-grid">
+                    <div class="curriculum-item">
+                        <h3>Module 1: Introduction to JavaScript</h3>
+                        <ul>
+                            <li>What is JavaScript?</li>
+                            <li>Setting up your development environment</li>
+                            <li>Your first JavaScript program</li>
+                            <li>Understanding the console</li>
+                        </ul>
+                    </div>
+                    <div class="curriculum-item">
+                        <h3>Module 2: Variables and Data Types</h3>
+                        <ul>
+                            <li>Declaring variables with var, let, and const</li>
+                            <li>Understanding data types</li>
+                            <li>Working with strings and numbers</li>
+                            <li>Boolean values and operators</li>
+                        </ul>
+                    </div>
+                    <div class="curriculum-item">
+                        <h3>Module 3: Functions and Control Flow</h3>
+                        <ul>
+                            <li>Creating and calling functions</li>
+                            <li>Function parameters and return values</li>
+                            <li>Conditional statements (if/else)</li>
+                            <li>Loops and iteration</li>
+                        </ul>
+                    </div>
+                    <div class="curriculum-item">
+                        <h3>Module 4: DOM Manipulation</h3>
+                        <ul>
+                            <li>Understanding the Document Object Model</li>
+                            <li>Selecting elements</li>
+                            <li>Modifying content and styles</li>
+                            <li>Event handling basics</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="enrolled-students">
+            <div class="container">
+                <h2>Enrolled Students</h2>
+                <div class="students-grid">
+                    <div class="student-card-mini">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Alice Brown" class="student-avatar">
+                        <div class="student-info">
+                            <h4>Alice Brown</h4>
+                            <p>alice@example.com</p>
+                        </div>
+                    </div>
+                    <div class="student-card-mini">
+                        <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Sophia White" class="student-avatar">
+                        <div class="student-info">
+                            <h4>Sophia White</h4>
+                            <p>sophia@example.com</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+      {% include 'components/footer.html' %}
+   
+{%endblock%}
+
+
+<!-- {% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -127,4 +245,4 @@
         </div>
     </footer>
 </body>
-</html>
+</html> -->
