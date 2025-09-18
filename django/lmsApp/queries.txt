@@ -1,0 +1,34 @@
+from courses.models import Courses
+>>> courses=Courses.objects.all()
+>>> courses
+<QuerySet []>
+>>> course = Course(title="web design")
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>                     ses'?
+NameError: name 'Course' is not defined. Did you mean: 'Courses'?
+>>> course = Courses(title="web design")
+>>> course.save()
+>>> all_courses=Courses.objects.all()
+>>> all_courses
+<QuerySet [<Courses: Courses object (1)>]>
+>>> python_course=Courses(title='Python course')
+>>> python_course.save()
+>>> all_courses=Courses.objects.all()                       object (2)>]>
+>>> all_courses
+<QuerySet [<Courses: Courses object (1)>, <Courses: Courses 
+object (2)>]>
+>>> design_course=Courses.objects.get(id=1)
+>>> design_course.delete()
+(1, {'courses.Courses': 1})
+>>> all_courses=Courses.objects.all()
+>>> all_courses
+<QuerySet [<Courses: Courses object (2)>]>
+>>> python=Courses.objects.get(id=2)
+>>> python.title="Django course"
+>>> python.save()
+>>> python.save()
+>>> courses=Courses.objects.all()
+>>> courses
+<QuerySet [<Courses: <id (2) title=Django course>>]>
+>>> Courses.objects.create(title='Node course')
+<Courses: <id (3) title=Node course>>
