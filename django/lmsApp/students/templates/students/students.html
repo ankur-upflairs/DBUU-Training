@@ -1,0 +1,96 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Students - EduPlatform</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    {% include 'components/navbar.html' %}
+    <main>
+        <section class="page-header">
+            <div class="container">
+                <h1>Our Students</h1>
+                <p>Meet the learners who are advancing their skills with EduPlatform</p>
+            </div>
+        </section>
+
+        <section class="students-section">
+            <div class="container">
+                <div class="students-grid">
+                    <div class="student-card">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Alice Brown" class="student-image">
+                        <div class="student-content">
+                            <h3>Alice Brown</h3>
+                            <p class="student-email">alice@example.com</p>
+                            <div class="enrolled-courses">
+                                <h4>Enrolled Courses:</h4>
+                                <ul>
+                                    <li>JavaScript Fundamentals</li>
+                                    <li>React Development</li>
+                                </ul>
+                            </div>
+                            <a href="student-detail.html" class="btn btn-primary">View Profile</a>
+                        </div>
+                    </div>
+
+                    <div class="student-card">
+                        <img src="https://randomuser.me/api/portraits/men/46.jpg" alt="David Green" class="student-image">
+                        <div class="student-content">
+                            <h3>David Green</h3>
+                            <p class="student-email">david@example.com</p>
+                            <div class="enrolled-courses">
+                                <h4>Enrolled Courses:</h4>
+                                <ul>
+                                    <li>React Development</li>
+                                    <li>Python Data Science</li>
+                                </ul>
+                            </div>
+                            <a href="student-detail.html" class="btn btn-primary">View Profile</a>
+                        </div>
+                    </div>
+
+                    <div class="student-card">
+                        <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Sophia White" class="student-image">
+                        <div class="student-content">
+                            <h3>Sophia White</h3>
+                            <p class="student-email">sophia@example.com</p>
+                            <div class="enrolled-courses">
+                                <h4>Enrolled Courses:</h4>
+                                <ul>
+                                    <li>JavaScript Fundamentals</li>
+                                    <li>Web Design Essentials</li>
+                                </ul>
+                            </div>
+                            <a href="student-detail.html" class="btn btn-primary">View Profile</a>
+                        </div>
+                    </div>
+
+                    <div class="student-card">
+                        <img src="https://randomuser.me/api/portraits/men/72.jpg" alt="James Black" class="student-image">
+                        <div class="student-content">
+                            <h3>James Black</h3>
+                            <p class="student-email">james@example.com</p>
+                            <div class="enrolled-courses">
+                                <h4>Enrolled Courses:</h4>
+                                <ul>
+                                    <li>Python Data Science</li>
+                                </ul>
+                            </div>
+                            <a href="student-detail.html" class="btn btn-primary">View Profile</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 EduPlatform. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

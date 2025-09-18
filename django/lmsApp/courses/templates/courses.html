@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    <title>{{ title }}</title>
+{%endblock%}
+{%block styles %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+{%endblock%}
+{%block content%}
+  {% include  "components/navbar.html" %}
+
+    <main>
+      <section class="page-header">
+        <div class="container">
+          <h1>Our Courses</h1>
+          <p>
+            Discover our comprehensive range of courses designed to boost your
+            skills
+          </p>
+        </div>
+      </section>
+
+      <section class="courses-section">
+        <div class="container">
+          <div class="courses-grid">
+            {% for course in courses %}
+               {% include 'components/course-card.html' with course=course %}
+            {% endfor %}
+          </div>
+        </div>
+      </section>
+    </main>
+      {% include 'components/footer.html' %}
+{%endblock%}
+<!-- <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="nav-container">
+        <div class="nav-logo">
+          <h2>EduPlatform</h2>
+        </div>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="courses.html" class="active">Courses</a></li>
+          <li><a href="students.html">Students</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <main>
+      <section class="page-header">
+        <div class="container">
+          <h1>Our Courses</h1>
+          <p>
+            Discover our comprehensive range of courses designed to boost your
+            skills
+          </p>
+        </div>
+      </section>
+
+      <section class="courses-section">
+        <div class="container">
+          <div class="courses-grid">
+            {% for course in courses %}
+            <div class="course-card">
+              <img
+                src="{{course.image}}"
+                alt="JavaScript Fundamentals"
+                class="course-image"
+              />
+              <div class="course-content">
+                <h3>{{course.title}}</h3>
+                <p class="course-instructor">Instructor: {{course.instructor}}</p>
+                <p class="course-description">
+                 {{course.description}}
+                </p>
+                <div class="course-meta">
+                  <span class="course-duration">{{course.duration}} hours</span>
+                  <span class="course-date">{{course.createdAt}}</span>
+                </div>
+                <a href="{% url 'course-details' course.id %}" class="btn btn-primary"
+                  >View Details</a
+                >
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <p>&copy; 2024 EduPlatform. All rights reserved.</p>
+      </div>
+    </footer>
+  </body>
+</html> -->
