@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponseNotFound
+from django.http import HttpResponseNotFound,HttpResponseRedirect
 from .models import Courses
 
 courses = [
@@ -81,3 +81,19 @@ def create_course(request):
 def manage_courses(request):
     courses= Courses.objects.all()
     return render(request,'manage-courses.html',{"courses":courses})
+
+def edit_course(request,id):
+    course=Courses.objects.get(id=id)
+    
+    if request.method == "GET":
+        return render(request,'edit-course.html',{
+            "course":course
+        })
+    else:
+        course.title=request.POST.get('title')
+        course.duration=request.POST.get('duration')
+        course.instructor=request.POST.get('instructor')
+        course.description=request.POST.get('description')
+        course.image=request.POST.get('image') 
+        course.save()
+        return HttpResponseRedirect('/courses/manage-courses')

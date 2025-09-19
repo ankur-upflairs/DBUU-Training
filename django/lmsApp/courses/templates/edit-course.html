@@ -1,0 +1,64 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Courses - EduPlatform Admin</title>
+    <link rel="stylesheet" href="{% static 'css/style-crud.css' %}">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h2>EduPlatform Admin</h2>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="courses.html">Courses</a></li>
+                <li><a href="students.html">Students</a></li>
+                <li><a href="admin-courses.html" class="active">Manage Courses</a></li>
+                <li><a href="admin-students.html">Manage Students</a></li>
+            </ul>
+        </div>
+    </nav>
+
+                <!-- Create Course Form -->
+                <div style="display: block;position: relative; margin: 0 auto;" class="form-modal" >
+                    <div class="form-content">
+                        <div class="form-header">
+                            <h2>Edit Course</h2>            
+                        </div>
+                        <form class="admin-form" action="/courses/edit/{{course.id}}" method="post" >
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <label for="title">Course Title</label>
+                                <input type="text" id="title" name="title" value="{{course.title}}" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="description">Description</label>
+                                <textarea id="description" name="description" rows="4" required>{{course.description}}</textarea>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="instructor">Instructor</label>
+                                    <input type="text" value="{{course.instructor}}" id="instructor" name="instructor" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="duration">Duration (hours)</label>
+                                    <input type="number" value="{{course.duration}}" id="duration" name="duration" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="image">Course Image URL</label>
+                                <input type="url" id="image" value="{{course.image}}" name="image" required>
+                            </div>
+                            <div class="form-actions">
+                                <button type="button" class="btn btn-secondary" onclick="hideCreateForm()">Cancel</button>
+                                <button type="submit" class="btn btn-primary">Create Course</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+</body>
+</html>
