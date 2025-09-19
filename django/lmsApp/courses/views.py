@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponseNotFound
+from .models import Courses
 
 courses = [
     {
@@ -58,3 +59,22 @@ def single_course_by_id(request,id):
             "title":selected_course['title'],
             "course":selected_course
         })
+
+def create_course(request):
+    # print(request.method)
+    if request.method=='GET':
+        return render(request,'add-course.html')
+    else:
+        # print(request.POST)
+        title=request.POST.get('title')
+        duration=request.POST.get('duration')
+        instructor=request.POST.get('instructor')
+        description=request.POST.get('description')
+        image=request.POST.get('image')   
+        # print(title)
+        course=Courses(title=title,duration=duration,instructor=instructor,description=description,image=image)
+        course.save()
+        return render(request,'thank-you.html')
+    
+def manage_courses(request):
+    return render(request,'manage-courses.html')

@@ -7,7 +7,7 @@ Traceback (most recent call last):
   File "<console>", line 1, in <module>                     ses'?
 NameError: name 'Course' is not defined. Did you mean: 'Courses'?
 >>> course = Courses(title="web design")
->>> course.save()
+>>> course.save() 
 >>> all_courses=Courses.objects.all()
 >>> all_courses
 <QuerySet [<Courses: Courses object (1)>]>

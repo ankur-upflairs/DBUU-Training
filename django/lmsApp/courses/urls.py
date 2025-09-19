@@ -3,7 +3,9 @@ from .views import *
 
 urlpatterns = [
    path("",all_courses,name='courses'),
-   path("<int:id>",single_course_by_id,name='course-details')
+   path('manage-courses',manage_courses),
+   path('create-course',create_course),
+   path("<int:id>",single_course_by_id,name='course-details'),
 ]
 
 
