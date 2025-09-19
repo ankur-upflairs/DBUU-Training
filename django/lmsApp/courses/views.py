@@ -42,9 +42,11 @@ courses = [
 ]
 
 def all_courses(request):
+    allCourses=Courses.objects.all()
+    
     return render(request,'courses.html',{
         "title":"All Courses - EduPlatform",
-        "courses":courses
+        "courses":allCourses
     })
 
 def single_course_by_id(request,id):
@@ -77,4 +79,5 @@ def create_course(request):
         return render(request,'thank-you.html')
     
 def manage_courses(request):
-    return render(request,'manage-courses.html')
+    courses= Courses.objects.all()
+    return render(request,'manage-courses.html',{"courses":courses})
